@@ -7,7 +7,7 @@ interface Props {
 
 const Container: React.FC<Props> = ({ children, className }: Props) => {
 	return (
-		<div className={`container ${className}`} data-testid="container">
+		<div className={`container ${className || ''}`} data-testid="container">
 			{children}
 		</div>
 	);
