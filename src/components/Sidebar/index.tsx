@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
 			minPrice,
 			maxPrice,
 		}));
-	}, [hotels.length, search, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [hotels.length, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handlePriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setSearch({
