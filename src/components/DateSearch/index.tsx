@@ -32,7 +32,7 @@ const DateSearch: React.FC = () => {
   			fromDate: tempFromDate,
   			toDate: tempToDate,
   		}));
-  	}, [search, tempFromDate, tempToDate]);
+  	}, [dispatch, search, tempFromDate, tempToDate]);
 
 	return (
 		<div className={styles.dateSearchWrapper} data-testid="date-search-form">

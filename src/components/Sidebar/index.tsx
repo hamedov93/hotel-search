@@ -36,21 +36,21 @@ const Sidebar: React.FC = () => {
 			minPrice,
 			maxPrice,
 		}));
-	}, [hotels.length]);
+	}, [hotels.length, search, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handlePriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setSearch({
 			...search,
 			maxPrice: Number(e.target.value),
 		}));
-	}, [search]);
+	}, [search, dispatch]);
 
 	const handleKeywordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setSearch({
 			...search,
 			keyword: e.target.value,
 		}));
-	}, [search]);
+	}, [search, dispatch]);
 
 	const priceRangePosition = 100 * (maxPrice - rangeMinPrice) / (rangeMaxPrice - rangeMinPrice);
 

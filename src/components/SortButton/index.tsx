@@ -19,7 +19,7 @@ const SortButton: React.FC<Props> = ({ field, label }: Props) => {
 			...search,
 			sortBy: field === search.sortBy ? null : field,
 		}));
-	}, [search, field]);
+	}, [search, field, dispatch]);
 
 	return (
 		<button
