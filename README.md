@@ -31,3 +31,4 @@ This will run eslint code style checks for the project.
 ## TODO
 1. Add unit tests for features directory to imporve test coverage.
 2. Integrate next server side props with redux toolkit.
+3. Add responsive styles.
