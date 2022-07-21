@@ -12,7 +12,7 @@ const preloadedState = {
 
 describe('<Sidebar />', () => {
 	it('should render search keyword and price range inputs', () => {
-		render(<Sidebar />);
+		render(<Sidebar hotels={hotels} />);
 
 		const keywordInput = screen.getByTestId('keyword-input') as HTMLInputElement;
 		const rangeInput = screen.getByLabelText('Filter price') as HTMLInputElement;
@@ -27,7 +27,7 @@ describe('<Sidebar />', () => {
 
 	it('should set initial min and max prices correctly', () => {
 
-		const { store } = render(<Sidebar />, { preloadedState });
+		const { store } = render(<Sidebar hotels={hotels} />, { preloadedState });
 		const { search: { minPrice, maxPrice } } = store.getState();
 
 		expect(minPrice).toBe(200);
@@ -38,7 +38,7 @@ describe('<Sidebar />', () => {
 	});
 
 	it('should handle keyword input correctly', () => {
-		const { store } = render(<Sidebar />);
+		const { store } = render(<Sidebar hotels={hotels} />);
 
 		const keywordInput = screen.getByTestId('keyword-input') as HTMLInputElement;
 		expect(keywordInput.value).toBe('');
@@ -50,7 +50,7 @@ describe('<Sidebar />', () => {
 	});
 
 	it('should handle range input correctly', () => {
-		const { store } = render(<Sidebar />, { preloadedState });
+		const { store } = render(<Sidebar hotels={hotels} />, { preloadedState });
 
 		const rangeInput = screen.getByLabelText('Filter price') as HTMLInputElement;
 		expect(rangeInput.value).toBe('300'); // Max value by default from hotels list above
