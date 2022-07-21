@@ -1,16 +1,22 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import SearchIcon from './SearchIcon';
 import styles from './Sidebar.module.scss';
-import { selectSearch, setSearch } from '../../features/hotel/searchSlice';
-import { selectHotel } from '../../features/hotel/hotelSlice';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-import { getMinAndMaxPrice } from '../../utils/common';
+import { selectSearch, setSearch } from '@app/features/hotel/searchSlice';
+import { selectHotel } from '@app/features/hotel/hotelSlice';
+import { useAppSelector, useAppDispatch } from '@app/redux/hooks';
+import { getMinAndMaxPrice } from '@app/utils/common';
+import { Hotel } from '@app/interfaces/hotel';
 
-const Sidebar: React.FC = () => {
+interface Props {
+	hotels: Array<Hotel>;
+}
+
+const Sidebar: React.FC<Props> = ({ hotels }: Props) => {
 
 	const dispatch = useAppDispatch();
 	const search = useAppSelector(selectSearch);
-	const { hotels } = useAppSelector(selectHotel);
+	// Get hotels from store if we use client side rendering
+	// const { hotels } = useAppSelector(selectHotel);
 
 	// Store absolute min and max prices in local state
 	// Those will not change
