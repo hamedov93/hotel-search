@@ -1,0 +1,52 @@
+.dateSearchWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.dateSearchForm {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin-left: auto;
+}
+
+.dateInputWrapper {
+	margin-left: 2rem;
+}
+
+.dateInputLabel {
+	margin-right: 0.5rem;
+}
+
+.dateInput {
+	width: 240px;
+}
+
+.button {
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+	color: white;
+	width: 120px;
+	margin-left: 2rem;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	-webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	&:active {
+		background-color: #891717;
+		border-color: #891717;
+		color: white;
+	}
+
+	&:hover, &:focus {
+		background-color: #821414;
+		border-color: #821414;
+		color: white;
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 0.25rem rgb(150 34 34 / 50%)
+	}
+}

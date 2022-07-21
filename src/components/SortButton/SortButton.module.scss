@@ -1,0 +1,15 @@
+.sortButton {
+  background-color: #006E7F;
+  border-color: #006E7F;
+  color: white;
+  width: auto;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+  &.active {
+    background-color: #004d59;
+    border-color: #004d59;
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgb(0 110 127 / 50%);
+  }
+}
