@@ -2,8 +2,8 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
-import type { RootState } from '../../redux/store';
-import { SortableField } from '../../interfaces/hotel';
+import type { RootState } from '@app/redux/store';
+import { SortableField } from '@app/interfaces/hotel';
 
 type Nullable<T> = T | null;
 

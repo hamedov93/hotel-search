@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hotel } from '../../interfaces/hotel';
+import { Hotel } from '@app/interfaces/hotel';
 import styles from './Listing.module.scss';
 
 type ListingHotelProps = Omit<Hotel, 'available_on'>;

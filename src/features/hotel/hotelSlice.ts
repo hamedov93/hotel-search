@@ -2,9 +2,9 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
-import type { RootState } from '../../redux/store';
+import type { RootState } from '@app/redux/store';
 import { getHotels } from './hotelThunk';
-import { Hotel } from '../../interfaces/hotel';
+import { Hotel } from '@app/interfaces/hotel';
 
 // declaring the types for our state
 export type HotelState = {

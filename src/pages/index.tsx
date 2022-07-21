@@ -62,7 +62,7 @@ const Home: NextPage<Props> = ({ hotels }) => {
         <Container>
           <DateSearch />
           <div className="wrapper">
-            <Sidebar />
+            <Sidebar hotels={hotels} />
             <div className="content">
               <div className={styles.hotelSorting}>
                 <div className="total-nights">

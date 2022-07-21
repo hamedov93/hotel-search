@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-import { selectSearch, setSearch } from '../../features/hotel/searchSlice';
-import { SortableField } from '../../interfaces/hotel';
+import { useAppSelector, useAppDispatch } from '@app/redux/hooks';
+import { selectSearch, setSearch } from '@app/features/hotel/searchSlice';
+import { SortableField } from '@app/interfaces/hotel';
 import styles from './SortButton.module.scss';
 
 interface Props {

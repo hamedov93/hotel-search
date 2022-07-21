@@ -1,9 +1,9 @@
-import '../styles/globals.scss'
+import '@app/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
-import { store } from '../redux/store';
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { store } from '@app/redux/store';
+import Header from '@app/components/Header'
+import Footer from '@app/components/Footer'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

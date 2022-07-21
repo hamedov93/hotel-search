@@ -1,5 +1,5 @@
-import { Hotel } from '../interfaces/hotel';
-import { SearchState } from '../features/hotel/searchSlice';
+import { Hotel } from '@app/interfaces/hotel';
+import { SearchState } from '@app/features/hotel/searchSlice';
 
 export const getTotalNights = (fromDate: string | null, toDate: string | null): number => {
 	if (!fromDate || !toDate) {

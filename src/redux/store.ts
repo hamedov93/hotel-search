@@ -7,8 +7,8 @@ import {
 
 import type { PreloadedState } from '@reduxjs/toolkit';
 
-import hotelReducer from '../features/hotel/hotelSlice';
-import searchReducer from '../features/hotel/searchSlice';
+import hotelReducer from '@app/features/hotel/hotelSlice';
+import searchReducer from '@app/features/hotel/searchSlice';
 
 const rootReducer = combineReducers({
   hotel: hotelReducer,

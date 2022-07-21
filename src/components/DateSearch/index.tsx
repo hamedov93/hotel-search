@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import DateInput from './DateInput';
 import styles from './DateSearch.module.scss';
-import { selectSearch, setSearch } from '../../features/hotel/searchSlice';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { selectSearch, setSearch } from '@app/features/hotel/searchSlice';
+import { useAppSelector, useAppDispatch } from '@app/redux/hooks';
 
 const DateSearch: React.FC = () => {
 
