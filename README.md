@@ -1,7 +1,7 @@
 
 ## Running the project
 
-First, install dependencies:
+First, clone the repository and install dependencies:
 ```bash
 npm install
 ```
