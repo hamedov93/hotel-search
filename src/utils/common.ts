@@ -16,6 +16,11 @@ export const getTotalNights = (fromDate: string | null, toDate: string | null): 
 }
 
 export const getMinAndMaxPrice = (hotels: Array<Hotel>): [number, number] => {
+
+	if (hotels.length === 0) {
+		return [0, 0];
+	}
+
 	const minPriceHotel = hotels.reduce((prev, curr) => {
 		return prev.price < curr.price ? prev : curr;
 	});

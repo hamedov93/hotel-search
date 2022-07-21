@@ -18,6 +18,7 @@ import SortButton from '@app/components/SortButton';
 import Loading from '@app/components/Loading';
 import styles from '@app/styles/Home.module.scss';
 import { request } from '@app/utils/request';
+import { getMinAndMaxPrice } from '@app/utils/common';
 import { Hotel } from '@app/interfaces/hotel';
 
 // Load hotels using server side rendering
@@ -48,8 +49,10 @@ const Home: NextPage<Props> = ({ hotels }) => {
     // dispatch(getHotels());
   }, []);
 
-  hotels = applyFilters(hotels, search);
   const totalNights = getTotalNights(fromDate, toDate);
+  const [minPrice, maxPrice] = getMinAndMaxPrice(hotels);
+
+  hotels = applyFilters(hotels, search);
 
   return (
     <>
@@ -62,7 +65,7 @@ const Home: NextPage<Props> = ({ hotels }) => {
         <Container>
           <DateSearch />
           <div className="wrapper">
-            <Sidebar hotels={hotels} />
+            <Sidebar rangeMinPrice={minPrice} rangeMaxPrice={maxPrice} />
             <div className="content">
               <div className={styles.hotelSorting}>
                 <div className="total-nights">

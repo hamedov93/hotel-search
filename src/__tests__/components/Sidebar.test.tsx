@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from 'test-utils';
 import Sidebar from '@app/components/Sidebar';
 import { hotels } from '@app/__mocks__/hotels';
+import { getMinAndMaxPrice } from '@app/utils/common';
 
 const preloadedState = {
 	hotel: {
@@ -12,10 +13,11 @@ const preloadedState = {
 
 describe('<Sidebar />', () => {
 	it('should render search keyword and price range inputs', () => {
-		render(<Sidebar hotels={hotels} />);
+		const [minPrice, maxPrice] = getMinAndMaxPrice(hotels);
+		render(<Sidebar rangeMinPrice={minPrice} rangeMaxPrice={maxPrice} />);
 
 		const keywordInput = screen.getByTestId('keyword-input') as HTMLInputElement;
-		const rangeInput = screen.getByLabelText('Filter price') as HTMLInputElement;
+		const rangeInput = screen.getByLabelText('Filter price per night') as HTMLInputElement;
 
 		expect(keywordInput).toBeInTheDocument();
 		expect(keywordInput.type).toBe('text');
@@ -26,8 +28,11 @@ describe('<Sidebar />', () => {
 	});
 
 	it('should set initial min and max prices correctly', () => {
-
-		const { store } = render(<Sidebar hotels={hotels} />, { preloadedState });
+		const [rangeMinPrice, rangeMaxPrice] = getMinAndMaxPrice(hotels);
+		const { store } = render(
+			<Sidebar rangeMinPrice={rangeMinPrice} rangeMaxPrice={rangeMaxPrice} />,
+			{ preloadedState },
+		);
 		const { search: { minPrice, maxPrice } } = store.getState();
 
 		expect(minPrice).toBe(200);
@@ -38,7 +43,8 @@ describe('<Sidebar />', () => {
 	});
 
 	it('should handle keyword input correctly', () => {
-		const { store } = render(<Sidebar hotels={hotels} />);
+		const [minPrice, maxPrice] = getMinAndMaxPrice(hotels);
+		const { store } = render(<Sidebar rangeMinPrice={minPrice} rangeMaxPrice={maxPrice} />);
 
 		const keywordInput = screen.getByTestId('keyword-input') as HTMLInputElement;
 		expect(keywordInput.value).toBe('');
@@ -50,9 +56,13 @@ describe('<Sidebar />', () => {
 	});
 
 	it('should handle range input correctly', () => {
-		const { store } = render(<Sidebar hotels={hotels} />, { preloadedState });
+		const [rangeMinPrice, rangeMaxPrice] = getMinAndMaxPrice(hotels);
+		const { store } = render(
+			<Sidebar rangeMinPrice={rangeMinPrice} rangeMaxPrice={rangeMaxPrice} />,
+			{ preloadedState },
+		);
 
-		const rangeInput = screen.getByLabelText('Filter price') as HTMLInputElement;
+		const rangeInput = screen.getByLabelText('Filter price per night') as HTMLInputElement;
 		expect(rangeInput.value).toBe('300'); // Max value by default from hotels list above
 
 		fireEvent.change(rangeInput, { target: { value: 250 } });

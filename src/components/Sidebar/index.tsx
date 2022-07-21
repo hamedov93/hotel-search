@@ -8,41 +8,25 @@ import { getMinAndMaxPrice } from '@app/utils/common';
 import { Hotel } from '@app/interfaces/hotel';
 
 interface Props {
-	hotels: Array<Hotel>;
+	rangeMinPrice: number;
+	rangeMaxPrice: number;
 }
 
-const Sidebar: React.FC<Props> = ({ hotels }: Props) => {
+const Sidebar: React.FC<Props> = ({ rangeMinPrice, rangeMaxPrice }: Props) => {
 
 	const dispatch = useAppDispatch();
 	const search = useAppSelector(selectSearch);
-	// Get hotels from store if we use client side rendering
-	// const { hotels } = useAppSelector(selectHotel);
-
-	// Store absolute min and max prices in local state
-	// Those will not change
-	const [rangeMinPrice, setRangeMinPrice] = useState<number>(0);
-	const [rangeMaxPrice, setRangeMaxPrice] = useState<number>(500);
 
 	// Min and max price that change with filters
 	const { minPrice, maxPrice } = search;
 
 	useEffect(() => {
-		// Set min and max price based on provided hotel list
-		if (hotels.length === 0) {
-			return;
-		}
-
-		const [minPrice, maxPrice] = getMinAndMaxPrice(hotels);
-
-		setRangeMaxPrice(maxPrice);
-		setRangeMinPrice(minPrice);
-
 		dispatch(setSearch({
 			...search,
-			minPrice,
-			maxPrice,
+			minPrice: rangeMinPrice,
+			maxPrice: rangeMaxPrice,
 		}));
-	}, [hotels.length, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [rangeMinPrice, rangeMaxPrice, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handlePriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setSearch({
@@ -73,7 +57,7 @@ const Sidebar: React.FC<Props> = ({ hotels }: Props) => {
 				/>
 			</div>
 			<div>
-				<label htmlFor="price" className={styles.priceLabel}>Filter price</label>
+				<label htmlFor="price" className={styles.priceLabel}>Filter price per night</label>
 				<input
 					className={styles.priceInput}
 					id="price"
